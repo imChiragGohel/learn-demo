@@ -1,0 +1,63 @@
+<h1>
+  {{ title }} - Interpolation
+</h1>
+
+<button type="button" (click)="onAddClick()">+Add</button>
+<br>
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of users; let i = index;">
+      <td>{{item.id}}</td>
+      <td>{{ item.age == '27' ? 'ABC' : item.name }}</td>
+      <td [ngClass]="{'red': item.age == 30, 'green': item.age == 28 , 'yellow': item.age == 27}">{{item.age}}</td>
+      <td><button type="button" (click)="onEditClick(item,i)">EDIT</button>
+        <button type="button" (click)="onDeleteClick(item,i)">DELETE</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div *ngIf="average >= 35">
+  PASS
+</div>
+
+<div *ngIf="average <= 34">
+  FAIL
+</div>
+
+<div>
+  <form [formGroup]="simpleForm">
+    Name:
+    <input type="text" formControlName="name" />
+    Touched :- {{simpleForm.controls.name.touched}}
+    Dirty :- {{simpleForm.controls.name.dirty}}
+    has :- {{simpleForm.controls.name.hasError('required')}}
+    <!-- <span *ngIf="">Requred</span> -->
+    Age:
+    <input type="text" placeholder="AGE" formControlName="age" (change)="onAgeChange()" />
+    <div *ngIf="simpleForm.controls.age.hasError('selectionWrong')">
+      Value is not proper....
+    </div>
+    Error : - {{simpleForm.controls.age.error}}
+    HASError : - {{simpleForm.controls.age.hasError('selectionWrong')}}
+
+    AGES:
+    <select formControlName="ages">
+      <option *ngFor="let item of agesList" [value]="item.id">{{item.name}}</option>
+    </select>
+    Id:
+    <input type="text" placeholder="ID" formControlName="id" />
+
+    Testing:
+    <input type="text" placeholder="ID" formControlName="testing" />
+
+    CHeckBOx:
+    <input type="checkbox" placeholder="ID" formControlName="check" (change)="onChangeCheck($event)" />
+  </form>
+</div>

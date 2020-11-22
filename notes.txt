@@ -1,0 +1,54 @@
+Companet
+// spect.ts - testing karma jsmine
+component.ts - bussi logic
+html - view
+//css 
+[component_name].constant.ts
+
+Component - Module - declare
+Module - Module - import --Pending
+
+Module - Usefor another - export
+
+Decoreetor - Class 
+
+@Input()
+@Output()
+@ViewwChiled()
+
+show hide
+
+Directive - Dom Modification
+3 - Attribute , Struct , Compa
+
+Attribute
+ngClass
+ngStyle
+
+Sru
+ngIf = conditional
+ngFor = [] (forEach) - looping
+ngSwitch = conditional
+Componen
+
+
+DD - Interval Type
+Day
+Week
+Month
+Year
+Custom
+
+Choose - If Custom
+
+Interval Type = (Day,Month,Week)
+Interval - Texbox 
+
+
+If Day =  1 to 365
+If Month = 1 to 12
+If Week = 1 to 52
+
+
+
+
