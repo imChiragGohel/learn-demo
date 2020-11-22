@@ -35,17 +35,17 @@
   <form [formGroup]="simpleForm">
     Name:
     <input type="text" formControlName="name" />
-    Touched :- {{simpleForm.controls.name.touched}}
+    <!-- Touched :- {{simpleForm.controls.name.touched}}
     Dirty :- {{simpleForm.controls.name.dirty}}
-    has :- {{simpleForm.controls.name.hasError('required')}}
+    has :- {{simpleForm.controls.name.hasError('required')}} -->
     <!-- <span *ngIf="">Requred</span> -->
     Age:
     <input type="text" placeholder="AGE" formControlName="age" (change)="onAgeChange()" />
     <div *ngIf="simpleForm.controls.age.hasError('selectionWrong')">
       Value is not proper....
     </div>
-    Error : - {{simpleForm.controls.age.error}}
-    HASError : - {{simpleForm.controls.age.hasError('selectionWrong')}}
+    <!-- Error : - {{simpleForm.controls.age.error}}
+    HASError : - {{simpleForm.controls.age.hasError('selectionWrong')}} -->
 
     AGES:
     <select formControlName="ages">
@@ -61,3 +61,6 @@
     <input type="checkbox" placeholder="ID" formControlName="check" (change)="onChangeCheck($event)" />
   </form>
 </div>
+
+<app-custom-alert *ngIf="isDeleteConfirm" (modelEvent)="modalEventListener($event)" [message]="deleteMessage" [data]="deleteItem">
+</app-custom-alert>

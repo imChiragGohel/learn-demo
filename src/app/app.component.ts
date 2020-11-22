@@ -26,6 +26,9 @@ export class AppComponent implements OnInit {
   total: any;
 
   simpleForm: FormGroup;
+  isDeleteConfirm: boolean;
+  deleteItem: any;
+  deleteMessage: string;
 
 
   constructor(private fb: FormBuilder) { // Class Default Method
@@ -97,7 +100,7 @@ export class AppComponent implements OnInit {
       this.simpleForm.get('testing').enable();
   }
 
-  onAddClick(name) {
+  onAddClick() {
     console.log('Yes Click');
     const formValue = this.simpleForm.getRawValue();
     if (formValue.id == 0) {
@@ -122,10 +125,29 @@ export class AppComponent implements OnInit {
     this.simpleForm.patchValue({ id: 0, name: '', age: 0 });
   }
 
+  modalEventListener(event) {
+    console.log('event:', event)
+    if (!event.buttonValue) {
+      this.isDeleteConfirm = event.buttonValue;
+    } else if (event.buttonValue && event.data) {
+      this.isDeleteConfirm = false;
+      const item = event.data.item;
+      const index = event.data.index;
+      console.log('item:', item)
+      console.log('index:', index)
+      this.users = this.users.filter(x => x.id != item.id);
+      //this.users.splice(index, 1);
+    }
+  }
+
   onDeleteClick(item, index) {
     console.log('Delete Click', item);
-    this.users = this.users.filter(x => x.id != item.id);
-    this.users.splice(index, 1);
+    this.isDeleteConfirm = true;
+    this.deleteItem = { item, index };
+    this.deleteMessage = `Are you sure you want to delete this ${item.id} no. record ?`;
+    console.log('this.deleteItem:', this.deleteItem)
+    // this.users = this.users.filter(x => x.id != item.id);
+    // this.users.splice(index, 1);
   }
 
 }

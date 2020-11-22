@@ -1,15 +1,24 @@
-<div bsModal #customAlertBoxModal="bs-modal" class="modal fade showChips" tabindex="-1" role="dialog"
-    aria-labelledby="customAlertBoxModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<div bsModal #customAlertBoxModal="bs-modal" class="modal fade showChips"
+    [config]="{backdrop: 'static','keyboard': false}" tabindex="-1" role="dialog" aria-labelledby="customAlertBoxModal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">DELETE</h5>
-                <button aria-label="Close" class="close" type="button">
+                <!-- <button aria-label="Close" class="close" type="button">
                     <span aria-hidden="true"><i class="fa fa-times"></i></span>
-                </button>
+                </button> -->
             </div>
             <div class="modal-body">
-                Demo
+                <span>{{message}}</span>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" (click)="onYesClick()">
+                    YES
+                </button>
+                <button class="btn btn-secondary" (click)="onNoClick()">
+                    NO
+                </button>
             </div>
         </div>
     </div>
